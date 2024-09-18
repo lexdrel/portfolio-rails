@@ -19,18 +19,18 @@ jobs:
     uses: ./.github/workflows/test-and-build.yml
     secrets: inherit
 
-  # deploy-to-staging:
-  #   name: Staging
-  #   uses: ./.github/workflows/deploy-to-cloud-run.yml
-  #   needs:
-  #     - test-and-build
-  #   with:
-  #     environment: staging
-  #     deploy-name: staging
-  #     cloud-sql-instance: portfolio-rails:us-central1:pg-fourteen-a
-  #     cloud-run-service-suffix: ${{ needs.test-and-build.outputs.git-commit-short-sha }}
-  #     cloud-run-container-image: us-central1-docker.pkg.dev/portfolio-rails/portfolio-rails/portfolio-rails-app@${{ needs.test-and-build.outputs.container-image-digest }}
-  #   secrets: inherit
+  deploy-to-staging:
+    name: Staging
+    uses: ./.github/workflows/deploy-to-cloud-run.yml
+    needs:
+      - test-and-build
+    with:
+      environment: staging
+      deploy-name: staging
+      cloud-sql-instance: lexdrel:us-central1:postgres-dev-a
+      cloud-run-service-suffix: ${{ needs.test-and-build.outputs.git-commit-short-sha }}
+      cloud-run-container-image: us-central1-docker.pkg.dev/lexdrel/lexdrel-artifacts/portfolio-rails-app@${{ needs.test-and-build.outputs.container-image-digest }}
+    secrets: inherit
 
   # deploy-to-production:
   #   name: Production

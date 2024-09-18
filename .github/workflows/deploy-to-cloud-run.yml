@@ -51,8 +51,8 @@ jobs:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1.0.0
         with:
-          service_account: github-actions-runner@portfolio-rails.iam.gserviceaccount.com
-          workload_identity_provider: projects/000000000000/locations/global/workloadIdentityPools/devops/providers/github
+          service_account: github-actions-runner@lexdrel.iam.gserviceaccount.com
+          workload_identity_provider: projects/88514678916/locations/global/workloadIdentityPools/ci-workload-pool/providers/github
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1.0.0
@@ -89,7 +89,7 @@ jobs:
             DATABASE_PASSWORD=${{ inputs.cloud-sql-password-secret }}
           env_vars: |
             DATABASE_URL=postgres://%2Fcloudsql%2F${{ steps.url-encode-cloud-sql-instance.outputs.encoded-value }}/${{ env.DATABASE_NAME }}
-            GOOGLE_CLOUD_PROJECT=portfolio-rails
+            GOOGLE_CLOUD_PROJECT=lexdrel
           flags: |-
             --cpu ${{ inputs.cloud-run-service-cpu-count }}
             --memory ${{ inputs.cloud-run-service-memory }}
