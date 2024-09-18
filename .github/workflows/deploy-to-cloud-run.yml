@@ -96,7 +96,7 @@ jobs:
             --allow-unauthenticated
             --add-cloudsql-instances ${{ inputs.cloud-sql-instance }}
             --min-instances=${{ inputs.cloud-run-minimum-instances }}
-            --service-account portfolio-rails-app@portfolio-rails.iam.gserviceaccount.com
+            --service-account github-actions-runner@lexdrel.iam.gserviceaccount.com
 
       - name: Finalize the deployment state on Github
         uses: bobheadxi/deployments@v1.3.0
