@@ -75,6 +75,9 @@ jobs:
         id: set-deploy-timestamp
         run: echo "timestamp=$(date +%s)" >> $GITHUB_OUTPUT
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v0.10.3
